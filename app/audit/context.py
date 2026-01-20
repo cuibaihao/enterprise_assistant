@@ -3,6 +3,7 @@ from __future__ import annotations
 from contextvars import ContextVar
 from typing import Any
 
+# 这是一条注释
 _audit_events: ContextVar[list[dict[str, Any]] | None] = ContextVar("audit_events", default=None)
 
 
