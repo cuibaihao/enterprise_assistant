@@ -5,7 +5,7 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from app.audit.context import add_audit_event
+from app.modules.audit.context import add_audit_event
 from app.core.redaction import redact_obj
 from app.core.request_context import get_client_ip, get_request_id, get_user_agent, get_user_id
 

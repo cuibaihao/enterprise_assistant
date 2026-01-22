@@ -8,7 +8,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 from sqlalchemy.types import JSON
 
-from app.models.base import Base
+from app.infra.db.base import Base
 
 
 class AuditEvent(Base):   # 这个表是审计事件表，用来记录和审计相关的信息
