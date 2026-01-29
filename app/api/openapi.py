@@ -3,8 +3,8 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
-from app.core.http_consts import HDR_CACHE_CONTROL, HDR_REQUEST_ID, HDR_RESPONSE_TIME_MS
-from app.api.routes_consts import NO_STORE_PATHS
+from app import HDR_CACHE_CONTROL, HDR_REQUEST_ID, HDR_RESPONSE_TIME_MS
+from app import NO_STORE_PATHS
 
 _COMMON_RESPONSE_HEADERS = {
     HDR_REQUEST_ID: {

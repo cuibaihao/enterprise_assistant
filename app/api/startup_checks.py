@@ -4,8 +4,8 @@ import logging
 
 from sqlalchemy import text
 
-from app.core.config import settings
-from app.core.enums import Env
+from app import settings
+from app import Env
 
 logger = logging.getLogger(__name__)
 

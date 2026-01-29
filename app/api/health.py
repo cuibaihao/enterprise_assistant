@@ -5,9 +5,9 @@ from redis.exceptions import RedisError
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.core.api_response import ok
-from app.core.api_schemas import ApiResponse
-from app.core.config import settings
+from app import ok
+from app import ApiResponse
+from app import settings
 
 router = APIRouter(tags=["system"])
 

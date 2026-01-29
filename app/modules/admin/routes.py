@@ -7,21 +7,21 @@ from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.api_response import ok
-from app.core.api_schemas import ApiResponse
-from app.core.errors import raise_err
-from app.infra.db.deps import get_db
-from app.modules.admin.schemas import (
+from app import ok
+from app import ApiResponse
+from app import raise_err
+from app import get_db
+from app import (
     GrantRoleData,
     GrantRoleReq,
     GrantRow,
     ListGrantsResp,
     RevokeRoleData,
 )
-from app.modules.audit.hook import record
-from app.modules.auth.models import Role, User, UserRoleGrant
-from app.modules.authz.deps import permission_required
-from app.modules.authz.scope_keys import scope_global
+from app import record
+from app import Role, User, UserRoleGrant
+from app import permission_required
+from app import scope_global
 
 logger = logging.getLogger(__name__)
 

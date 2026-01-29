@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from celery import Celery
 
-from app.core.config import settings
+from app import settings
 
 celery_app = Celery(
     "enterprise_assistant",

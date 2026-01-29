@@ -5,9 +5,9 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from app.modules.audit.context import add_audit_event
-from app.core.redaction import redact_obj
-from app.core.request_context import get_client_ip, get_request_id, get_user_agent, get_user_id
+from app import add_audit_event
+from app import redact_obj
+from app import get_client_ip, get_request_id, get_user_agent, get_user_id
 
 
 def _to_obj(v: Any) -> Any:  # 把各种对象转换为可序列化的基础结构

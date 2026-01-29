@@ -6,7 +6,7 @@ from typing import Any
 
 from jose import JWTError, jwt
 
-from app.modules.security.jwt_claims import (
+from app import (
     CLAIM_EXP,
     CLAIM_IAT,
     CLAIM_ISS,

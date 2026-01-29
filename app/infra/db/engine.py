@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
-from app.core.config import settings
+from app import settings
 
 
 def create_engine() -> AsyncEngine:

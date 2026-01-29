@@ -3,10 +3,10 @@ from __future__ import annotations
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.errors import raise_err
-from app.modules.audit.hook import record
-from app.modules.auth.models import Permission, RolePermission, User, UserRoleGrant
-from app.modules.authz.scope_keys import scopes_with_global
+from app import raise_err
+from app import record
+from app import Permission, RolePermission, User, UserRoleGrant
+from app import scopes_with_global
 
 
 async def require_perms(  # 权限检查核心函数，没有权限就抛错，并记录审计

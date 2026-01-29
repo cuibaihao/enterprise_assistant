@@ -4,8 +4,8 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.modules.auth.models import Permission, Role, RolePermission
-from app.modules.authz.seed import DEFAULT_ROLE_PERMS, PERMISSIONS, ROLES
+from app import Permission, Role, RolePermission
+from app import DEFAULT_ROLE_PERMS, PERMISSIONS, ROLES
 
 
 async def sync_authz(db: AsyncSession) -> None:

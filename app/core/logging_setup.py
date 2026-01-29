@@ -9,8 +9,8 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from app.core.redaction import redact_obj
-from app.core.request_context import get_request_id, get_user_id
+from app import redact_obj
+from app import get_request_id, get_user_id
 
 
 class ContextFilter(logging.Filter):

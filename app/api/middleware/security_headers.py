@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from app.core.security_defaults import (
+from app import (
     DEFAULT_HSTS_MAX_AGE,
     DEFAULT_PERMISSIONS_POLICY,
     DEFAULT_REFERRER_POLICY,

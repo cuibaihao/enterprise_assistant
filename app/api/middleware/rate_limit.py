@@ -7,10 +7,10 @@ from typing import Callable
 from fastapi import Depends, Request
 from redis.exceptions import RedisError
 
-from app.core.errors import raise_err
-from app.infra.redis_client import get_redis
-from app.api.middleware.real_ip import get_real_ip
-from app.modules.audit.hook import record
+from app import raise_err
+from app import get_redis
+from app import get_real_ip
+from app import record
 
 RL_REDIS_KEY_PREFIX = "rl"
 

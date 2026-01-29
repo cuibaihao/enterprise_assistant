@@ -16,7 +16,7 @@ def _resolve_record() -> Callable[..., Any] | None:
         return _record_impl
     _resolved_record = True
     try:
-        from app.modules.audit.service import record as impl
+        from app import record as impl
         _record_impl = cast(Callable[..., Any], impl)
     except Exception:
         _record_impl = None
@@ -57,8 +57,8 @@ def _resolve_middleware() -> tuple[Callable[[], Any], Callable[[Any, Any], Await
 
     _resolved_mw = True
     try:
-        from app.modules.audit.middleware import flush_audit as _flush
-        from app.modules.audit.middleware import init_audit as _init
+        from app import flush_audit as _flush
+        from app import init_audit as _init
 
         _init_impl = cast(Callable[[], Any], _init)
         _flush_impl = cast(Callable[[Any, Any], Awaitable[Any]], _flush)

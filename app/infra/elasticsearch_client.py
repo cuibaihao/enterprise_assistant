@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi import Request
 from elasticsearch import AsyncElasticsearch
 
-from app.core.config import settings
+from app import settings
 
 
 def create_es_client() -> AsyncElasticsearch:

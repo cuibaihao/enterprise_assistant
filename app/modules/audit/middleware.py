@@ -4,9 +4,9 @@ import logging
 
 from fastapi import Request
 
-from app.modules.audit.context import clear_audit_context, init_audit_context, pop_audit_events
-from app.modules.audit.models import AuditEvent
-from app.core.request_context import get_client_ip, get_request_id, get_user_agent, get_user_id
+from app import clear_audit_context, init_audit_context, pop_audit_events
+from app import AuditEvent
+from app import get_client_ip, get_request_id, get_user_agent, get_user_id
 
 logger = logging.getLogger(__name__)
 

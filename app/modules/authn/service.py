@@ -7,7 +7,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import timedelta
 
-from app.modules.authn.consts import (
+from app import (
     MAX_REFRESH_TOKEN_LEN,
     MAX_RID_LEN,
     MAX_SECRET_LEN,

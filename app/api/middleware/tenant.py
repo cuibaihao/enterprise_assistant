@@ -5,7 +5,7 @@ import re
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 
-# from app.core.request_context import set_workspace_id
+from app import set_workspace_id
 
 _HDR_WORKSPACE_ID = "X-Workspace-Id"
 
@@ -61,9 +61,9 @@ def _extract_workspace_id(request: Request) -> int | None:
     return None
 
 
-# class TenantContextMiddleware(BaseHTTPMiddleware):
-#     async def dispatch(self, request: Request, call_next):
-#         wid = _extract_workspace_id(request)
-#         setattr(request.state, "workspace_id", wid)
-#         set_workspace_id(wid)
-#         return await call_next(request)
+class TenantContextMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        wid = _extract_workspace_id(request)
+        setattr(request.state, "workspace_id", wid)
+        set_workspace_id(wid)
+        return await call_next(request)

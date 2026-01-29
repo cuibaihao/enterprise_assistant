@@ -41,7 +41,7 @@ def _import_models(dotted: str, fallback_relpath: str):
 
 _audit_models = _import_models("app.modules.audit.models", "app/modules/audit/models.py")  # noqa: F401,E402
 _auth_models = _import_models("app.modules.auth.models", "app/modules/auth/models.py")  # noqa: F401,E402
-_resources_models = _import_models("app.modules.resources.models", "app/modules/resources/models.py")  # noqa: F401,E402
+_resources_models = _import_models("app.modules. resources.models", "app/modules/ resources/models.py")  # noqa: F401,E402
 
 
 def run_migrations_offline() -> None:

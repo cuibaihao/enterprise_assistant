@@ -101,3 +101,5 @@ class Resource(Base):  # 统一资源目录是把业务资源映射为可授权�
         onupdate=func.current_timestamp(),
         comment="Updated time",
     )
+
+

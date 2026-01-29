@@ -5,15 +5,15 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.config import settings
-from app.core.errors import raise_err
-from app.core.request_context import set_user_id
-from app.infra.db.deps import get_db
-from app.infra.redis_client import get_redis
-from app.modules.audit.hook import record
-from app.modules.auth.models import User
-from app.modules.authn.service import get_tokenver
-from app.modules.security.jwt import decode_access_token
+from app import settings
+from app import raise_err
+from app import set_user_id
+from app import get_db
+from app import get_redis
+from app import record
+from app import User
+from app import get_tokenver
+from app import decode_access_token
 
 bearer_scheme = HTTPBearer(auto_error=False)
 # 定义Bearer认证解析器auto_error=False表示没有token时不自动抛403，由我们自己手工处理

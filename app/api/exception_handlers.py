@@ -9,10 +9,10 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from app.core.api_schemas import ErrorInfo, ErrorResponse
-from app.core.errors import AppError, resolve_message
-from app.core.http_consts import HDR_REQUEST_ID, STATE_REQUEST_ID
-from app.modules.audit.hook import record
+from app import ErrorInfo, ErrorResponse
+from app import AppError, resolve_message
+from app import HDR_REQUEST_ID, STATE_REQUEST_ID
+from app import record
 
 logger = logging.getLogger(__name__)
 

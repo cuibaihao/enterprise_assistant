@@ -4,19 +4,19 @@ from fastapi import APIRouter, Depends, Response
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.middleware.rate_limit import RateLimitSpec, rate_limit_ip
-from app.api.response import ok_no_store
-from app.core.api_schemas import ActionResult, ApiResponse
-from app.core.config import settings
-from app.core.errors import raise_err
-from app.infra.db.deps import get_db
-from app.infra.redis_client import get_redis
-from app.modules.audit.hook import record
-from app.modules.auth.models import User
-from app.modules.authn.consts import RL_AUTH_LOGIN, RL_AUTH_REFRESH, RL_AUTH_REGISTER
-from app.modules.authn.deps import get_current_user
-from app.modules.authn.schemas import LoginReq, MeResp, RefreshReq, RegisterReq, TokenResp
-from app.modules.authn.service import (
+from app import RateLimitSpec, rate_limit_ip
+from app import ok_no_store
+from app import ActionResult, ApiResponse
+from app import settings
+from app import raise_err
+from app import get_db
+from app import get_redis
+from app import record
+from app import User
+from app import RL_AUTH_LOGIN, RL_AUTH_REFRESH, RL_AUTH_REGISTER
+from app import get_current_user
+from app import LoginReq, MeResp, RefreshReq, RegisterReq, TokenResp
+from app import (
     bump_tokenver,
     get_tokenver,
     mint_refresh_token,
@@ -26,8 +26,8 @@ from app.modules.authn.service import (
     unpack_refresh,
     verify_and_consume_refresh,
 )
-from app.modules.security.jwt import create_access_token
-from app.modules.security.password import hash_password, verify_password
+from app import create_access_token
+from app import hash_password, verify_password
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 

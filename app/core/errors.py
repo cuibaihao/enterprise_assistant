@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Mapping, NoReturn
-from app.core.error_codes import ERROR_MESSAGES, ERROR_STATUS  # 1.5导入的常量
+from app import ERROR_MESSAGES, ERROR_STATUS  # 1.5导入的常量
 
 @dataclass
 class AppError(Exception):  # 业务错误的统一异常类型
