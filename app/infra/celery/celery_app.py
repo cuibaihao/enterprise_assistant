@@ -2,13 +2,15 @@ from __future__ import annotations
 
 from celery import Celery
 
-from app import settings
+from app.core.config import settings
 
 celery_app = Celery(
     "enterprise_assistant",
     broker=settings.rabbitmq_url,
     backend=settings.celery_result_backend,
-    include=[],
+    include=[
+        "app.workers.tasks.kb_ingest",
+    ],
 )
 
 celery_app.conf.update(

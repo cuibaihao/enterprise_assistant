@@ -5,22 +5,25 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from redis.asyncio import Redis
 
-from app import install_exception_handlers
-from app import router as health_router
-from app import install_cors
-from app import RequestContextMiddleware
-from app import SecurityHeadersMiddleware
-from app import TenantContextMiddleware
-from app import install_openapi
-from app import run_startup_checks
-from app import settings
-from app import setup_logging
-from app import create_engine
-from app import create_session_maker
-from app import create_es_client
-from app import router as admin_router
-from app import router as auth_router
-from app import sync_authz
+from app.api.exception_handlers import install_exception_handlers
+from app.api.health import router as health_router
+from app.api.middleware.cors import install_cors
+from app.api.middleware.request_context import RequestContextMiddleware
+from app.api.middleware.security_headers import SecurityHeadersMiddleware
+from app.api.middleware.tenant import TenantContextMiddleware
+from app.api.openapi import install_openapi
+from app.api.startup_checks import run_startup_checks
+from app.core.config import settings
+from app.core.logging_setup import setup_logging
+from app.infra.db.engine import create_engine
+from app.infra.db.session import create_session_maker
+from app.infra.elasticsearch_client import create_es_client
+from app.modules.admin.routes import router as admin_router
+from app.modules.authn.routes import router as auth_router
+from app.modules.authz.seed_sync import sync_authz
+
+from app.infra.qdrant_client import create_qdrant_client
+from app.infra.blob_storage.local_fs import LocalFSStorage
 
 
 @asynccontextmanager
@@ -30,6 +33,8 @@ async def lifespan(application: FastAPI):
     engine = create_engine()
     application.state.db_engine = engine
     application.state.db_session_maker = create_session_maker(engine)
+    application.state.qdrant = create_qdrant_client()
+    application.state.storage = LocalFSStorage(root_dir=str(settings.blob_local_root))
 
     redis = Redis.from_url(
         settings.redis_url,
@@ -75,7 +80,7 @@ async def lifespan(application: FastAPI):
 app = FastAPI(title=settings.app_name, lifespan=lifespan)
 
 app.add_middleware(RequestContextMiddleware)
-# app.add_middleware(TenantContextMiddleware)
+app.add_middleware(TenantContextMiddleware)
 
 install_exception_handlers(app)
 
@@ -95,3 +100,4 @@ app.include_router(auth_router)
 app.include_router(admin_router)
 
 install_openapi(app)
+
